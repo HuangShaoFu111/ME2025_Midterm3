@@ -35,7 +35,15 @@ __需求規格__
     - 表單填寫完畢後，需能將資料以 POST 方法送給後端 /product 路徑，並記錄於資料庫中。
 
 __作答區__
-1. orderadd.js
+1. form.html
+請在下方區域中完成表格設計:
+```
+{% block form %}
+
+{% endblock %}
+```
+
+2. orderadd.js
 請完成下列 JavaScript 邏輯以實作連動與計算功能：
     ```
     // orderadd.js

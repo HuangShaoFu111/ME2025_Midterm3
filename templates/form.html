@@ -1,5 +1,51 @@
 {% extends 'index.html' %}
 
 {% block form %}
+<form action="/product" method="post" id="add-form">
+    <p>客戶名稱</p>
+    <input type="text" name="customer-name" id="customer-name" required>
+    
+    <p>備註</p>
+    <input type="text" name="product-note" id="product-note">
+    
+    <p>日期</p>
+    <input type="date" name="product-date" id="product-date" required>
+    
+    <p>商品種類</p>
+    <select id="product-category" name="product-category" onchange="selectCategory()">
+        <option value="" disabled selected>請選擇種類</option>
+        <option value="飲料">飲料</option>
+        <option value="輕食">輕食</option>
+        <option value="主食">主食</option>
+        <option value="點心">點心</option>
+    </select>
+    
+    <p>商品名稱</p>
+    <select id="product-name" name="product-name" onchange="selectProduct()" required>
+        <option value="" disabled selected>請先選擇種類</option>
+    </select>
+    
+    <p>單價</p>
+    <input type="number" id="product-price" readonly>
+    
+    <p>數量</p>
+    <input type="number" name="product-amount" id="product-amount" min="1" value="1" onchange="countTotal()" oninput="countTotal()" required>
+    
+    <p>小計</p>
+    <input type="number" name="product-total" id="product-total" readonly>
+    
+    <p>狀態</p>
+    <select name="product-status" id="product-status">
+        <option value="未付款" selected>未付款</option>
+        <option value="已付款">已付款</option>
+        <option value="已完成">已完成</option>
+    </select>
+    
+    <button type="submit" id="add-button">送出訂單</button>
+</form>
 
+<script>
+    // 設定日期預設值為當天
+    document.getElementById('product-date').valueAsDate = new Date();
+</script>
 {% endblock %}
